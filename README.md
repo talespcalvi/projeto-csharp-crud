@@ -1,0 +1,26 @@
+CREATE DATABASE sistema;
+
+USE sistema;
+
+CREATE TABLE Alunos (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    DataNascimento DATE NOT NULL,
+    Email VARCHAR(100),
+    Telefone VARCHAR(15)
+);
+
+CREATE TABLE Cursos (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    Descricao TEXT
+);
+
+CREATE TABLE Matriculas (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    AlunoID INT NOT NULL,
+    CursoID INT NOT NULL,
+    DataMatricula DATE NOT NULL,
+    FOREIGN KEY (AlunoID) REFERENCES Alunos(ID),
+    FOREIGN KEY (CursoID) REFERENCES Cursos(ID)
+);
